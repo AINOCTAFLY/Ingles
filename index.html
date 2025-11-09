@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>No Estés Triste</title>
+    <style>
+        /* Estilos Generales */
+        body {
+            background-color: #000; /* Fondo negro */
+            color: #d1d1d1; /* Color de texto gris claro */
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Ocupa toda la altura de la ventana */
+            margin: 0;
+            text-align: center;
+        }
+
+        /* Título Principal */
+        .titulo {
+            font-size: 5em;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.2); /* Color gris muy transparente */
+            transition: color 0.5s ease-in-out; /* Transición para el efecto de JS */
+        }
+
+        /* Contenedor del Botón y Mensaje */
+        .contenido {
+            margin-top: 20px;
+        }
+
+        /* Mensaje Secundario */
+        .mensaje {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        /* Estilo del Botón */
+        .boton {
+            background-color: #3b82f6; /* Azul brillante */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4); /* Sombra azul */
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        .boton:hover {
+            background-color: #2563eb; /* Azul más oscuro al pasar el ratón */
+        }
+
+        .boton:active {
+            transform: scale(0.98);
+        }
+
+        /* Pie de Página (Opcional, lo agregué para el ejemplo) */
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            font-size: 0.8em;
+            color: #555;
+        }
+
+        /* Clase de Animación con CSS */
+        .animado {
+            animation: fadeIn 1s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1 id="titulo" class="titulo">H o l a Dulcesita!</h1>
+
+    <div class="contenido">
+        <p id="mensaje" class="mensaje">Ya no estés triste, En el fondo de tu corazon siempre estare ❤️🥰</p>
+        <button id="btnTriste" class="boton">Presiona para ya no estar triste!</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const btn = document.getElementById('btnTriste');
+            const titulo = document.getElementById('titulo');
+            const mensaje = document.getElementById('mensaje');
+
+            btn.addEventListener('click', () => {
+                // 1. Cambia el color del título
+                titulo.style.color = 'rgba(255, 255, 255, 0.8)'; // Color blanco más visible
+
+                // 2. Cambia el mensaje y lo anima
+                mensaje.textContent = '¡Gracias por presionar! ¡siempre te Amare! 😊🌟';
+                
+                // Reinicia y aplica la animación
+                mensaje.classList.remove('animado'); 
+                // Usamos setTimeout para forzar un 'reflow' y que la animación se repita
+                setTimeout(() => {
+                    mensaje.classList.add('animado');
+                }, 10); 
+
+                // 3. Deshabilita el botón
+                btn.textContent = 'Siempre estare esperando por ti por eso somos el Sol y la luna! 😊';
+                btn.disabled = true;
+                btn.style.backgroundColor = '#10b981'; // Color verde para indicar éxito
+                btn.style.boxShadow = '0 4px 15px rgba(16, 185, 129, 0.4)';
+            });
+        });
+    </script>
+
+    <div class="footer">
+        Hecho con cariño
+    </div>
+</body>
+</html>
